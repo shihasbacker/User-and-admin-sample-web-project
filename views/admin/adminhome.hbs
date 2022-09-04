@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+
+  <a class="navbar-brand">admin</a>
+  <a class="btn btn-primary" href="/adduser">Add New User</a>
+  <a class="btn btn-outline-success my-2 my-sm-0" href="/adminlogout">Logout</a>
+
+</nav>
+
+
+<div class="row mt-5">
+ <div class="col-md-10 mx-auto ">
+  <table class="table " id="usertable">
+  <thead>
+    <tr>
+      <th scope="col">first name</th>
+      <th scope="col">last name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Edit / Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{this.fname}}</td>
+      <td>{{this.lname}}</td>
+      <td>{{this.mailid}}</td>
+      <td>
+        <a class="btn btn-success" href="/update-user/{{this._id}}">Edit</a>
+        <a class="btn btn-danger" href="/delete-user/{{this._id}}" onclick="return confirm('Are you sure you want to Delete {{this.userName}} ?')">Delete</a>
+             </td>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+ </div>
+</div>
+
+
+
+<script>
+  $(document).ready( function () {
+    $('#usertable').DataTable();
+} );
+</script>
+</div>
